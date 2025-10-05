@@ -13,7 +13,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-df = pd.read_csv('q-fastapi-1.csv')
+df = pd.read_csv('q-fastapi.csv')
 
 @app.get("/api")
 def get_students(class_: List[str] = Query(None, alias="class")):
