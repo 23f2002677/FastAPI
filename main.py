@@ -13,12 +13,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-df = pd.read_csv('q-fastapi.csv')
+df = pd.read_csv("q-fastapi.csv")
+
 
 @app.get("/api")
 def get_students(class_: List[str] = Query(None, alias="class")):
     if class_:
-        filtered = df[df['class'].isin(class_)]
+        filtered = df[df["class"].isin(class_)]
     else:
         filtered = df
     result = filtered.to_dict(orient="records")
